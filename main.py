@@ -46,6 +46,8 @@ def amount_of_visitors():
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     address = str(request.remote_addr)
 
+    print(f"Request from {address}")
+
     add_visitor(address, time)
 
     content = get_amount_of_unique_visitors()
@@ -58,5 +60,6 @@ def amount_of_visitors():
     response.expires = 0
 
     return response 
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8001, debug=True)
