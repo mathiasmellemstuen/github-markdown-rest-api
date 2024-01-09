@@ -49,12 +49,12 @@ def amount_of_visitors():
     add_visitor(address, time)
 
     content = get_amount_of_unique_visitors()
-    content = f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="20"><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="11"><text x="0" y="14">{content}</text></g></svg>'
+ 
+    content = f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="20"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="11"><text class="letters" x="0" y="14">{content}</text></g></svg>'
     response = Response(content)
     response.content_type = "image/svg+xml"
     response.expires = 0
 
     return response 
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8001, debug=True)
