@@ -44,7 +44,10 @@ def get_amount_of_unique_visitors():
 def amount_of_visitors():
 
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    address = str(request.remote_addr)
+
+    # address = str(request.remote_addr)
+    addr_list = request.headers.getlist("HTTP_X_FORWARDED_FOR")
+    address = str(addr_list[0]) if addr_list else str(request.environ.get("HTTP_X_REAL_IP", request.remote_addr))
 
     print(f"Request from {address}", flush=True)
 
