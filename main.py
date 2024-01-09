@@ -46,7 +46,7 @@ def amount_of_visitors():
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     address = str(request.remote_addr)
 
-    print(f"Request from {address}")
+    print(f"Request from {address}", flush=True)
 
     add_visitor(address, time)
 
