@@ -40,6 +40,42 @@ def get_amount_of_unique_visitors():
     
     return data[0][0]
 
+def get_amount_of_visitors(): 
+    database = sqlite3.connect("database.db")
+    
+    # Count all unique ip addresses in the database
+    query = f"SELECT COUNT(address) FROM visitors;"
+    data = database.execute(query).fetchall()
+    database.commit()
+    database.close()
+    
+    return data[0][0]
+
+
+@app.route("/amount_of_visitors.svg")
+def amount_of_unique_visitors():
+
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # address = str(request.remote_addr)
+    addr_list = request.headers.getlist("HTTP_X_FORWARDED_FOR")
+    address = str(addr_list[0]) if addr_list else str(request.environ.get("HTTP_X_REAL_IP", request.remote_addr))
+
+    print(f"Request from {address}", flush=True)
+
+    add_visitor(address, time)
+
+    content = get_amount_of_unique_visitors()
+    
+    first_part = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="17"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="17"><text class="letters" x="0" y="17">'
+    end_part = "</text></g></svg>"
+    content = f'{first_part}{content}{end_part}'
+    response = Response(content)
+    response.content_type = "image/svg+xml"
+    response.expires = 0
+
+    return response 
+
 @app.route("/amount_of_visitors.svg")
 def amount_of_visitors():
 
