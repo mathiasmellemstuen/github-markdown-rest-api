@@ -67,7 +67,7 @@ def amount_of_unique_visitors():
 
     content = get_amount_of_unique_visitors()
     
-    first_part = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="18"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="17"><text class="letters" x="0" y="17">'
+    first_part = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="18"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="14"><text class="letters" x="0" y="17">'
     end_part = "</text></g></svg>"
     content = f'{first_part}{content}{end_part}'
     response = Response(content)
@@ -91,7 +91,7 @@ def amount_of_visitors():
 
     content = get_amount_of_visitors()
     
-    first_part = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="18"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="17"><text class="letters" x="0" y="17">'
+    first_part = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="18"><style>.letters { fill: #2E2E2E; } @media (prefers-color-scheme: dark) { .letters { fill: #ffffff; }}</style><g font-family="Verdana,DejaVu Sans,Geneva,sans-serif" font-size="14"><text class="letters" x="0" y="17">'
     end_part = "</text></g></svg>"
     content = f'{first_part}{content}{end_part}'
     response = Response(content)
