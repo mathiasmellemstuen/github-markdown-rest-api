@@ -52,7 +52,7 @@ def get_amount_of_visitors():
     return data[0][0]
 
 
-@app.route("/amount_of_visitors.svg")
+@app.route("/amount_of_unique_visitors.svg")
 def amount_of_unique_visitors():
 
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
